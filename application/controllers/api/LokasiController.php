@@ -41,4 +41,24 @@ class LokasiController extends REST_Controller
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
+
+    public function index_get()
+    {
+        $id = $this->get('id');
+        $data = $this->db->get_where('log_login', ['user_id' => $id])->result_array();
+        if ($data) {
+            return
+                $this->response([
+                    'status' => TRUE,
+                    'message' => 'Successfuly',
+                    'data' => $data
+                ], REST_Controller::HTTP_OK);
+        } else {
+            return
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'Not found'
+                ], REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
 }

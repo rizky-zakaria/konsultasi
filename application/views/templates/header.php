@@ -36,38 +36,24 @@
         <aside class="main-sidebar bg-primary text-light elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url('DashboardController'); ?>" class="brand-link">
-                <img src="<?= base_url(); ?>assets/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url(); ?>assets/img/hiv.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
                 <span class="text-light">Consult-web</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="<?= base_url('vendor/dist/img/') . $this->session->userdata('avatar'); ?>" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block"><?= $this->session->userdata('username') ?></a>
-                    </div>
-                </div> -->
-                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?= base_url('DashboardController'); ?>" class="nav-link text-light">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="<?= base_url('HomeController'); ?>" class="nav-link text-light">
+                                <i class="nav-icon fas fa-home"></i>
                                 <p>
-                                    Dashboard
+                                    Home
                                 </p>
                             </a>
                         </li>
                         <?php
-                        // echo "Hello";
                         if ($this->session->userdata('role') == 1) :
-                            // echo $this->session->userdata('role');
                         ?>
                             <li class="nav-header">Account</li>
                             <li class="nav-item">
@@ -85,23 +71,15 @@
                         ?>
                             <li class="nav-header">Manajemen Akun</li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>RumahsakitController/dokter" class="nav-link text-light">
+                                <a href="<?= base_url(); ?>DikesController/faskes" class="nav-link text-light">
                                     <i class="nav-icon fas fa-user-md"></i>
                                     <p>
-                                        Dokter
+                                        Fasilitas Kesehatan
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>RumahsakitController/perawat" class="nav-link text-light">
-                                    <i class="nav-icon fas fa-user-nurse"></i>
-                                    <p>
-                                        Perawat
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url(); ?>RumahsakitController/pasien" class="nav-link text-light">
+                                <a href="<?= base_url(); ?>DikesController/pasien" class="nav-link text-light">
                                     <i class="nav-icon fas fa-hospital"></i>
                                     <p>
                                         Pasien
@@ -109,10 +87,27 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>RumahsakitController/manajemen" class="nav-link text-light">
+                                <a href="<?= base_url(); ?>DikesController/manajemen" class="nav-link text-light">
                                     <i class="nav-icon fas fa-users-cog"></i>
                                     <p>
                                         Manajemen
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-header">Laporan</li>
+                            <li class="nav-item">
+                                <a href="<?= base_url(); ?>DikesController/obat" class="nav-link text-light">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>
+                                        Pra E dan ART
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url(); ?>DikesController/obat" class="nav-link text-light">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>
+                                        Pengguna Aktif
                                     </p>
                                 </a>
                             </li>
@@ -123,23 +118,33 @@
                         ?>
                             <li class="nav-header">Konsultasi</li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>DokterController/konsultasi" class="nav-link text-light">
+                                <a href="<?= base_url(); ?>FaskesController/konsultasi" class="nav-link text-light">
                                     <i class="nav-icon fas fa-comment"></i>
                                     <p>
                                         Ruang Konsultasi
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-header">Fasilitas</li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>DokterController/laporan" class="nav-link text-light">
-                                    <i class="nav-icon fas fa-book"></i>
+                                <a href="<?= base_url(); ?>DikesController/obat" class="nav-link text-light">
+                                    <i class="nav-icon fas fa-file-medical"></i>
                                     <p>
-                                        Laporan Konsultasi
+                                        Obat
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-header">Laporan</li>
+                            <li class="nav-item">
+                                <a href="<?= base_url(); ?>DikesController/obat" class="nav-link text-light">
+                                    <i class="nav-icon fas fa-file-medical"></i>
+                                    <p>
+                                        Pra E dan ART
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url(); ?>DokterController/logmasukpasien" class="nav-link text-light">
+                                <a href="<?= base_url(); ?>FaskesController/logmasukpasien" class="nav-link text-light">
                                     <i class="nav-icon fas fa-map-marker"></i>
                                     <p>
                                         Log Masuk Pasien
@@ -148,32 +153,10 @@
                             </li>
                         <?php
                         endif;
-
-                        if ($this->session->userdata('role') == 4) :
-                        ?>
-                            <li class="nav-header">Konsultasi</li>
-                            <li class="nav-item">
-                                <a href="<?= base_url(); ?>PerawatController/konsultasi" class="nav-link text-light">
-                                    <i class="nav-icon fas fa-comment"></i>
-                                    <p>
-                                        Ruang Konsultasi
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url(); ?>PerawatController/laporan" class="nav-link text-light">
-                                    <i class="nav-icon fas fa-book"></i>
-                                    <p>
-                                        Laporan Konsultasi
-                                    </p>
-                                </a>
-                            </li>
-                        <?php
-                        endif;
                         ?>
                         <li class="nav-header">Other</li>
                         <li class="nav-item">
-                            <a href="<?= base_url() ?>DashboardController/logout" class="nav-link  bg-danger">
+                            <a href="<?= base_url() ?>HomeController/logout" class="nav-link  bg-danger">
                                 <i class="nav-icon fas fa-power-off"></i>
                                 <p>
                                     Logout

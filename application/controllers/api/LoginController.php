@@ -24,6 +24,8 @@ class LoginController extends REST_Controller
         $password = $this->post('password');
 
         $data = $this->User_model->checkUser($username, $password)->row_array();
+        // var_dump($password);
+        // die;
         if ($data) {
             return
                 $this->response([

@@ -36,7 +36,7 @@ class ChatController extends REST_Controller
     public function chat_post()
     {
         $id = $this->post('id');
-        $pengirim = $this->post('pengirim');
+        $pengirim = "Pasien";
         $pesan = $this->post('pesan');
         $token = $this->post('token');
         $data = array(
@@ -48,9 +48,10 @@ class ChatController extends REST_Controller
             'desa' => "",
             'kecamatan' => "",
             'kabupaten' => "",
-            'token' => $token
+            'token' => $token,
+            'tipe' => 'text'
         );
-        $insert = $this->db->insert($data);
+        $insert = $this->db->insert('chat', $data);
         if ($insert) {
             return
                 $this->response([
@@ -91,6 +92,47 @@ class ChatController extends REST_Controller
                     'status' => FALSE,
                     'message' => 'Wrong Action'
                 ], REST_Controller::HTTP_NO_CONTENT);
+        }
+    }
+
+    public function image_post()
+    {
+        $strImage = $this->post('image');
+        $gambar = date("dmYHis") . ".jpg";
+        $directoryRoot = $_SERVER['DOCUMENT_ROOT'] . '/konsultasi/assets/upload/' . $gambar;
+        if (file_put_contents($directoryRoot, base64_decode($strImage))) {
+            $id = $this->post('id');
+            $pengirim = $this->post('pengirim');
+            $pesan = $gambar;
+            $token = $this->post('token');
+            // var_dump($pesan);
+            // die;
+            $data = array(
+                'id_cluster' => $id,
+                'pengirim' => $pengirim,
+                'pesan' => $pesan,
+                'waktu' => date('H:i:s'),
+                'tanggal' => date('d-m-Y'),
+                'desa' => "",
+                'kecamatan' => "",
+                'kabupaten' => "",
+                'token' => $token,
+                'tipe' => 'file'
+            );
+
+            $insert = $this->db->insert('chat', $data);
+            if ($insert) {
+                return
+                    $this->response([
+                        'status' => TRUE,
+                        'message' => 'Successfuly'
+                    ], REST_Controller::HTTP_OK);
+            } else {
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'No chats were found'
+                ], REST_Controller::HTTP_NOT_FOUND);
+            }
         }
     }
 

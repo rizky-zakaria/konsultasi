@@ -86,7 +86,7 @@
                     <div>
                         <h1>Consult-app</h1>
                         <h2>Aplikasi Konsultasi Untuk Pengidap HIV</h2>
-                        <a href=" {{ asset('apps/app-debug.apk') }} " class="btn-get-started scrollto">Get Application</a>
+                        <a href="<?= base_url('assets/apps/app-debug.apk') ?>" class="btn-get-started scrollto">Get Application</a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">

@@ -22,8 +22,6 @@ class ClusterController extends REST_Controller
         $id = $this->post('id');
 
         $data = $this->db->get_where('cluster', ['id_pengirim' => $id])->result_array();
-        // $data = $this->db->query("SELECT * FROM cluster WHERE id_pengirim = $id")->result_array();
-
         if ($data) {
             return
                 $this->response([

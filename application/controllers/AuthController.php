@@ -34,7 +34,7 @@ class AuthController extends CI_Controller
                 'alert' => "Selamat, Anda berhasil masuk!"
             );
             $this->session->set_userdata($session);
-            redirect(base_url("DashboardController"));
+            redirect(base_url("HomeController"));
         } else {
             redirect(base_url("AuthController"));
         }
